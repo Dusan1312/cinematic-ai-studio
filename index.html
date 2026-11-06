@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic AI Studio</title>
+    <style>
+        body {
+            background-color: #0b0b0e;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #16161c;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            border: 1px solid #2a2a35;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #d4af37;
+            margin-top: 0;
+            font-size: 22px;
+        }
+        p {
+            color: #a0a0b0;
+            font-size: 14px;
+        }
+        textarea {
+            width: 100%;
+            height: 90px;
+            background: #0f0f13;
+            color: white;
+            border: 1px solid #333342;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        textarea:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(135deg, #d4af37, #aa820a);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        button:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+        }
+        #aiStatus {
+            margin-top: 15px;
+            font-style: italic;
+            color: #d4af37;
+            font-size: 14px;
+            text-align: center;
+        }
+        #aiRezultat {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #aiRezultat img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cinematic AI Studio</h2>
+        <p>Unesi opis scene koju želiš da generišeš:</p>
+        
+        <textarea id="aiPrompt" placeholder="Npr. Cinematic shot of Belgrade at night, cyberpunk style..."></textarea>
+        
+        <button id="genBtn" onclick="pokreniAI()">Generiši vizuelni sadržaj</button>
+        
+        <div id="aiStatus"></div>
+        <div id="aiRezultat"></div>
+    </div>
+
+    <!-- Skripta za povezivanje sa fal.ai -->
+    <script type="module">
+      import { fal } from "https://cdn.jsdelivr.net/npm/@fal-ai/client@latest/dist/index.js";
+
+      // Konfigurisano sa tvojim ključem
+      fal.config({
+        credentials: "fal_sk_c4724a31724148e8826962a10bb4bcfa:c417ea20c0d4d30f2a260d8f2fbee4ac"
+      });
+
+      window.pokreniAI = async function() {
+          const promptTekst = document.getElementById('aiPrompt').value.trim();
+          const statusDiv = document.getElementById('aiStatus');
+          const rezultatDiv = document.getElementById('aiRezultat');
+          const btn = document.getElementById('genBtn');
+
+          if (!promptTekst) {
+              alert("Molimo te unesi tekstualni opis!");
+              return;
+          }
+
+          btn.disabled = true;
+          statusDiv.innerText = "Generisanje je u toku, sačekaj trenutak...";
+          rezultatDiv.innerHTML = "";
+
+          try {
+              // Pozivamo fal.ai model
+              const result = await fal.subscribe("fal-ai/flux/dev", {
+                  input: { prompt: promptTekst },
+                  logs: true,
+                  onQueueUpdate: (update) => {
+                      console.log("Status:", update.status);
+                  },
+              });
+
+              statusDiv.innerText = "Uspešno generisano!";
+              
+              if (result.images && result.images.length > 0) {
+                  rezultatDiv.innerHTML = `<img src="${result.images[0].url}" alt="Generisana slika">`;
+              } else {
+                  rezultatDiv.innerHTML = `<pre style="color: #fff; background: #0f0f13; padding: 10px; border-radius: 8px; text-align: left; overflow-x: auto;">${JSON.stringify(result, null, 2)}</pre>`;
+              }
+
+          } catch (error) {
+              console.error(error);
+              statusDiv.innerText = "Došlo je do greške pri generisanju.";
+          } finally {
+              btn.disabled = false;
+          }
+      };
+    </script>
+
+</body>
+</html>
