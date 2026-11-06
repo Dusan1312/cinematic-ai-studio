@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0c10">
+<title>CINEMATIC AI STUDIO — Filmski radni prostor</title>
+<style>
+:root{--bg:#0b0c10;--panel:#141720;--panel2:#1a1e29;--line:#2b3040;--gold:#e9bd70;--gold2:#bd8740;--text:#f4f2ed;--muted:#9ba2b2;--green:#83c7a0;--red:#e58d8d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#33283a 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:20px 18px 60px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 24px;border-bottom:1px solid #ffffff12}.brand{font-weight:900;letter-spacing:1.7px;font-size:15px}.brand b{color:var(--gold)}.brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:2.4px;font-weight:600;margin-top:2px}.topright{display:flex;align-items:center;gap:8px}.pill{border:1px solid #6d5838;color:var(--gold);border-radius:99px;padding:6px 10px;font-size:10px;letter-spacing:.8px;text-transform:uppercase}.save-indicator{font-size:11px;color:var(--green)}
+.hero{padding:30px 0 18px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:10px;font-weight:800}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.06;letter-spacing:-1.6px;margin:8px 0 10px}.hero p{max-width:650px;color:var(--muted);margin:0}.nav{display:flex;gap:8px;overflow:auto;padding:16px 0 8px;scrollbar-width:none}.nav button{white-space:nowrap;background:#ffffff08;border:1px solid var(--line);color:var(--muted);padding:9px 13px;border-radius:10px;font-size:12px}.nav button.active{background:#302719;border-color:#82663c;color:var(--gold)}
+.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);gap:16px;align-items:start}.column{min-width:0}.panel{background:linear-gradient(145deg,#191d27f5,#11141bf5);border:1px solid var(--line);border-radius:17px;padding:18px;margin:12px 0;box-shadow:0 14px 36px #0003}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.panel h2{font-size:16px;margin:0;letter-spacing:.1px}.panel h3{font-size:13px;margin:0 0 10px}.muted,.hint{color:var(--muted);font-size:12px}.hint{margin-top:6px}.field{margin:12px 0}.field label{display:block;font-size:12px;font-weight:750;margin:0 0 7px;color:#e7e5e0}.field input,.field textarea,.field select{width:100%;background:#0c0f15;border:1px solid #33394a;border-radius:10px;color:var(--text);padding:11px 12px;outline:none}.field textarea{min-height:86px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold2);box-shadow:0 0 0 3px #e9bd7018}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.btn{border:0;border-radius:10px;padding:11px 14px;font-weight:800;font-size:12px;background:linear-gradient(110deg,#f0cf8d,#c08a43);color:#17130d}.btn:hover{filter:brightness(1.08)}.btn.secondary{background:#252b38;border:1px solid #3a4153;color:#f1eee7}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}.btn.danger{background:#392126;border:1px solid #63343c;color:#f1b4b4}.btn.small{padding:7px 10px;font-size:11px}.btn.full{width:100%}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.scene-list{display:flex;flex-direction:column;gap:9px}.scene{display:grid;grid-template-columns:56px 1fr auto;gap:11px;align-items:center;padding:10px;background:#0d1017;border:1px solid #2a3040;border-radius:12px}.thumb{height:52px;border-radius:8px;background:linear-gradient(145deg,#343044,#161b27);display:grid;place-items:center;color:var(--gold);font-size:18px}.scene strong{display:block;font-size:12px}.scene small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.scene.selected{border-color:#9a7544;background:#211d18}.empty{border:1px dashed #41485a;border-radius:12px;padding:24px;text-align:center;color:var(--muted);font-size:12px}.output{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b0e14;border:1px solid #2c3342;border-radius:11px;padding:13px;min-height:130px;color:#e6e3dc;font-size:12px;line-height:1.65}.character-card,.project-card{background:#0d1017;border:1px solid #2a3040;border-radius:12px;padding:12px}.character-card{margin:9px 0}.character-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.character-top strong{font-size:12px}.tag{font-size:10px;color:var(--gold);border:1px solid #55452e;border-radius:99px;padding:3px 7px}.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.project-card{min-height:120px;display:flex;flex-direction:column;justify-content:space-between}.project-card strong{font-size:13px}.project-card p{font-size:10px;color:var(--muted);margin:5px 0}.project-card .actions{margin-top:8px}.meter{height:5px;background:#2b3040;border-radius:99px;overflow:hidden;margin:9px 0}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));width:0}.checkline{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin:9px 0}.checkline input{accent-color:var(--gold)}.status{font-size:11px;color:var(--green);min-height:17px;margin-top:8px}.foot{color:#737b8b;font-size:10px;text-align:center;line-height:1.6;margin:28px 0}.hidden{display:none!important}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 0 8px}.section-title h2{font-size:20px;margin:0}.section-title p{font-size:11px;color:var(--muted);margin:4px 0 0}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.hero{padding-top:25px}.column.right{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.column.right .panel:first-child{grid-column:1/-1}}
+@media(max-width:560px){.shell{padding:14px 12px 42px}.topbar{padding-bottom:16px}.pill{font-size:9px}.hero h1{font-size:32px}.panel{padding:14px;margin:9px 0}.two,.three{grid-template-columns:1fr 1fr}.column.right{display:block}.project-grid{grid-template-columns:1fr}.scene{grid-template-columns:48px 1fr auto}.thumb{height:46px}.nav{margin:0 -2px}.nav button{padding:8px 10px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand">CINEMATIC <b>AI</b> STUDIO<small>YOUR PERSONAL FILM WORKSPACE</small></div>
+  <div class="topright"><span class="save-indicator" id="saveState">● Lokalno</span><span class="pill">Prototip 2.0</span></div>
+</header>
+<section class="hero">
+  <div class="eyebrow">Od ideje do filmske scene</div>
+  <h1>Tvoj film. Tvoja režija.</h1>
+  <p>Organizuj projekat, razvijaj scene kadar po kadar i sačuvaj izgled likova. Pripremi precizne promptove za AI video alat.</p>
+</section>
+<nav class="nav">
+  <button class="active" data-go="workspace">Radni prostor</button>
+  <button data-go="storyboard">Storyboard</button>
+  <button data-go="characters">Likovi</button>
+  <button data-go="gallery">Moji projekti</button>
+</nav>
+
+<div class="layout" id="workspace">
+ <div class="column">
+  <section class="panel">
+   <div class="panel-head"><h2>01 / Projekat</h2><span class="tag">Aktivni film</span></div>
+   <div class="field"><label for="projectName">Naziv projekta</label><input id="projectName" placeholder="Npr. Poslednji trag u Beogradu"></div>
+   <div class="two">
+    <div class="field"><label for="genre">Žanr</label><select id="genre"><option>Kriminalistički triler</option><option>Akcija</option><option>Horor</option><option>Misterija</option><option>Drama</option><option>Naučna fantastika</option><option>Komedija</option><option>Dokumentarni</option></select></div>
+    <div class="field"><label for="visual">Vizuelni stil</label><select id="visual"><option>Fotorealističan filmski izgled</option><option>Neo-noir, mračni tonovi</option><option>Holivudski blockbuster</option><option>Dokumentarni realizam</option><option>Stilizovana 3D animacija</option></select></div>
+   </div>
+   <div class="two">
+    <div class="field"><label for="aspect">Format kadra</label><select id="aspect"><option>16:9 — bioskopski ekran</option><option>9:16 — vertikalni video</option><option>2.39:1 — široki bioskopski</option><option>1:1 — kvadrat</option></select></div>
+    <div class="field"><label for="cameraMood">Atmosfera</label><select id="cameraMood"><option>Napeto i realistično</option><option>Mračno i misteriozno</option><option>Dinamično i energično</option><option>Emotivno i intimno</option><option>Hladno i dokumentarno</option></select></div>
+   </div>
+   <div class="actions"><button class="btn" id="saveProject">Sačuvaj projekat</button><button class="btn secondary" id="newProject">Novi projekat</button></div>
+   <div class="status" id="projectStatus" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="sceneEditor">
+   <div class="panel-head"><h2>02 / Režija scene</h2><span class="tag" id="sceneNumber">Kadar 01</span></div>
+   <div class="field"><label for="sceneTitle">Naziv scene / kadra</label><input id="sceneTitle" placeholder="Npr. Dolazak policije"></div>
+   <div class="field"><label for="sceneDesc">Šta se tačno dešava?</label><textarea id="sceneDesc" placeholder="Opiši radnju redom. Napiši šta lik radi, gde gleda, kako se kreće i šta se menja u kadru..."></textarea><div class="hint">Piši na srpskom. Prompt će biti sastavljen na engleskom jeziku radi boljeg rada sa video modelima.</div></div>
+   <div class="two">
+    <div class="field"><label for="shot">Vrsta kadra</label><select id="shot"><option>Wide establishing shot</option><option>Medium shot</option><option>Close-up</option><option>Over-the-shoulder shot</option><option>Tracking shot</option><option>POV shot</option><option>Low-angle shot</option><option>Drone / aerial shot</option></select></div>
+    <div class="field"><label for="movement">Kretanje kamere</label><select id="movement"><option>Slow cinematic push-in</option><option>Steady handheld tracking</option><option>Static locked camera</option><option>Slow pan left or right</option><option>Camera follows the character</option><option>Subtle dolly-out</option><option>Dynamic tracking movement</option></select></div>
+   </div>
+   <div class="two">
+    <div class="field"><label for="lighting">Osvetljenje</label><select id="lighting"><option>Realistic practical lighting</option><option>Streetlights and deep shadows</option><option>Neon reflections and haze</option><option>Soft natural daylight</option><option>Harsh dramatic backlight</option><option>Police lights reflecting on surfaces</option></select></div>
+    <div class="field"><label for="duration">Trajanje kadra</label><select id="duration"><option>5 sekundi</option><option>6 sekundi</option><option>8 sekundi</option><option>10 sekundi</option><option>12 sekundi</option></select></div>
+   </div>
+   <div class="field"><label for="sound">Zvuk i atmosfera</label><input id="sound" placeholder="Npr. udaljene sirene, motor u leru, kiša..."></div>
+   <div class="field"><label for="continuity">Kontinuitet sa prethodnim kadrom</label><textarea id="continuity" placeholder="Npr. Počinje tačno iz poslednjeg frejma prethodnog kadra; isti položaj tela, odeća, vozilo i osvetljenje." style="min-height:65px"></textarea></div>
+   <div class="actions"><button class="btn" id="makePrompt">Napravi profesionalni prompt</button><button class="btn secondary" id="addScene">Dodaj u storyboard</button></div>
+   <div class="status" id="sceneStatus" aria-live="polite"></div>
+  </section>
+
+  <section class="panel">
+   <div class="panel-head"><h2>03 / Filmski prompt</h2><span class="tag">ENG / AI video</span></div>
+   <div class="output" id="promptOutput">Tvoj profesionalni prompt pojaviće se ovde kada pripremiš scenu.</div>
+   <div class="actions"><button class="btn" id="copyPrompt">Kopiraj prompt</button><button class="btn secondary" id="downloadPrompt">Preuzmi .txt</button></div>
+   <div class="hint">Ovaj prototip priprema promptove. Generisanje videa još nije povezano sa AI modelom.</div>
+  </section>
+ </div>
+
+ <aside class="column right">
+  <section class="panel" id="storyboard">
+   <div class="panel-head"><h2>Storyboard</h2><span class="tag" id="sceneCount">0 kadrova</span></div>
+   <div class="scene-list" id="sceneList"><div class="empty">Još nema kadrova. Pripremi scenu i dodaj je u storyboard.</div></div>
+   <div class="meter"><span id="progressBar"></span></div><div class="hint" id="progressText">0% projekta razrađeno</div>
+   <div class="actions"><button class="btn secondary full" id="exportProject">Izvezi projekat (.json)</button></div>
+  </section>
+
+  <section class="panel" id="characters">
+   <div class="panel-head"><h2>Biblija likova</h2><span class="tag">Kontinuitet</span></div>
+   <p class="muted">Sačuvaj izgled svakog lika i ubacuj iste karakteristike u svaki kadar.</p>
+   <div class="field"><label for="charName">Ime / oznaka lika</label><input id="charName" placeholder="Npr. Misteriozni čovek"></div>
+   <div class="field"><label for="charLook">Fizički izgled</label><textarea id="charLook" placeholder="Godine, građa, kosa, lice, posebne karakteristike..." style="min-height:65px"></textarea></div>
+   <div class="field"><label for="charClothes">Odeća i detalji</label><input id="charClothes" placeholder="Crni kaput, tamne pantalone, kožne rukavice..."></div>
+   <div class="field"><label for="charBehavior">Držanje i ponašanje</label><input id="charBehavior" placeholder="Smiren, oprezan, ne pokazuje emocije..."></div>
+   <button class="btn full" id="addCharacter">Sačuvaj lika</button>
+   <div id="characterList"><div class="empty" style="margin-top:10px">Dodaj likove da bi njihov izgled ostao dosledan kroz scene.</div></div>
+   <label class="checkline"><input type="checkbox" id="includeCharacters" checked> Automatski ubaci opise likova u prompt</label>
+  </section>
+
+  <section class="panel">
+   <div class="panel-head"><h2>Kontrola kontinuiteta</h2><span class="tag">Režija</span></div>
+   <label class="checkline"><input type="checkbox" id="sameFace" checked> Isti identitet i crte lica u svim kadrovima</label>
+   <label class="checkline"><input type="checkbox" id="sameClothes" checked> Ista odeća i detalji</label>
+   <label class="checkline"><input type="checkbox" id="sameLocation" checked> Ista lokacija i raspored prostora</label>
+   <label class="checkline"><input type="checkbox" id="naturalMotion" checked> Prirodni pokreti bez deformacija</label>
+   <label class="checkline"><input type="checkbox" id="noText" checked> Bez nasumičnog teksta, titlova i logotipa</label>
+   <div class="hint">Ove smernice se dodaju promptu kao režijske instrukcije.</div>
+  </section>
+ </aside>
+</div>
+
+<section class="panel" id="gallery">
+ <div class="panel-head"><div><h2>Moji projekti</h2><div class="muted">Projekti se čuvaju lokalno na ovom uređaju.</div></div><span class="tag" id="projectCount">0 projekata</span></div>
+ <div class="project-grid" id="projectGrid"><div class="empty" style="grid-column:1/-1">Još nema sačuvanih projekata.</div></div>
+</section>
+<p class="foot">CINEMATIC AI STUDIO · Prototip 2.0 · Podaci se čuvaju u memoriji pregledača na ovom uređaju.<br>Za stvarno generisanje videa biće potrebno povezati serverski backend i AI video model. Otvoreni modeli i dalje zahtevaju GPU resurse, koji mogu imati trošak.</p>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let scenes=[],characters=[],projects=[],selectedScene=-1,currentPrompt='',activeProjectId=null;
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function safeLoad(){try{scenes=JSON.parse(localStorage.getItem('cas_scenes')||'[]');characters=JSON.parse(localStorage.getItem('cas_chars')||'[]');projects=JSON.parse(localStorage.getItem('cas_projects')||'[]');}catch(e){scenes=[];characters=[];projects=[];}}
+function persist(){try{localStorage.setItem('cas_scenes',JSON.stringify(scenes));localStorage.setItem('cas_chars',JSON.stringify(characters));localStorage.setItem('cas_projects',JSON.stringify(projects));$('saveState').textContent='● Sačuvano lokalno';}catch(e){$('saveState').textContent='● Memorija nije dostupna';}}
+function getProject(){return {id:activeProjectId||uid(),name:$('projectName').value.trim()||'Moj filmski projekat',genre:$('genre').value,visual:$('visual').value,aspect:$('aspect').value,mood:$('cameraMood').value,scenes:JSON.parse(JSON.stringify(scenes)),characters:JSON.parse(JSON.stringify(characters)),updated:new Date().toISOString()};}
+function saveProject(){const p=getProject();activeProjectId=p.id;const i=projects.findIndex(x=>x.id===p.id);if(i>=0)projects[i]=p;else projects.unshift(p);persist();renderProjects();$('projectStatus').textContent='Projekat je sačuvan na ovom uređaju.';}
+function renderScenes(){const box=$('sceneList');$('sceneCount').textContent=scenes.length+' kadrova';$('progressText').textContent=(scenes.length?100:0)+'% projekta razrađeno · '+scenes.length+' scena';$('progressBar').style.width=scenes.length?'100%':'0%';if(!scenes.length){box.innerHTML='<div class="empty">Još nema kadrova. Pripremi scenu i dodaj je u storyboard.</div>';return;}box.innerHTML='';scenes.forEach((s,i)=>{const d=document.createElement('div');d.className='scene'+(i===selectedScene?' selected':'');d.innerHTML=`<div class="thumb">▣</div><div><strong>${esc(s.title||'Kadar '+(i+1))}</strong><small>${esc(s.duration||'')} · ${esc(s.shot||'')}</small></div><button class="btn ghost small" data-edit="${i}">Otvori</button>`;box.appendChild(d);});box.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>loadScene(+b.dataset.edit));}
+function renderCharacters(){const box=$('characterList');if(!characters.length){box.innerHTML='<div class="empty" style="margin-top:10px">Dodaj likove da bi njihov izgled ostao dosledan kroz scene.</div>';return;}box.innerHTML='';characters.forEach((c,i)=>{const d=document.createElement('div');d.className='character-card';d.innerHTML=`<div class="character-top"><strong>${esc(c.name)}</strong><button class="btn danger small" data-delchar="${i}">Ukloni</button></div><div class="hint">${esc(c.look)}<br>${esc(c.clothes)}<br>${esc(c.behavior)}</div>`;box.appendChild(d);});box.querySelectorAll('[data-delchar]').forEach(b=>b.onclick=()=>{characters.splice(+b.dataset.delchar,1);persist();renderCharacters();});}
+function renderProjects(){const box=$('projectGrid');$('projectCount').textContent=projects.length+' projekata';if(!projects.length){box.innerHTML='<div class="empty" style="grid-column:1/-1">Još nema sačuvanih projekata.</div>';return;}box.innerHTML='';projects.forEach(p=>{const d=document.createElement('div');d.className='project-card';d.innerHTML=`<div><strong>${esc(p.name)}</strong><p>${esc(p.genre)} · ${(p.scenes||[]).length} kadrova<br>${new Date(p.updated).toLocaleDateString('sr-RS')}</p></div><div class="actions"><button class="btn secondary small" data-open="${p.id}">Otvori</button><button class="btn danger small" data-del="${p.id}">Obriši</button></div>`;box.appendChild(d);});box.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openProject(b.dataset.open));box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{projects=projects.filter(p=>p.id!==b.dataset.del);persist();renderProjects();});}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function characterText(){if(!$('includeCharacters').checked||!characters.length)return '';return characters.map(c=>`${c.name}: ${c.look}. Clothing: ${c.clothes}. Behaviour: ${c.behavior}.`).join('\n');}
+function continuityText(){const a=[];if($('sameFace').checked)a.push('Preserve exactly the same facial identity, facial structure and recognizable features for every recurring character.');if($('sameClothes').checked)a.push('Keep wardrobe, accessories and clothing details identical to the established character design.');if($('sameLocation').checked)a.push('Maintain consistent geography, architecture, object placement and screen direction within the location.');if($('naturalMotion').checked)a.push('Use physically plausible human movement, stable anatomy, natural hands and realistic motion; avoid morphing and visual glitches.');if($('noText').checked)a.push('No random text, subtitles, captions, watermarks or logos.');return a.join('\n');}
+function buildPrompt(){const desc=$('sceneDesc').value.trim();if(!desc){$('sceneStatus').textContent='Prvo opiši šta se dešava u sceni.';return '';}const p=`Create a ${$('duration').value} cinematic video shot.\nGENRE: ${$('genre').value}.\nVISUAL STYLE: ${$('visual').value}. Overall mood: ${$('cameraMood').value}.\nASPECT RATIO: ${$('aspect').value}.\n\nSCENE ACTION:\n${desc}\n\nSHOT DESIGN:\nShot type: ${$('shot').value}.\nCamera movement: ${$('movement').value}.\nLighting: ${$('lighting').value}.\nSound design: ${$('sound').value.trim()||'Natural location ambience, subtle cinematic sound design.'}\n\nCHARACTER CONTINUITY:\n${characterText()||'Maintain consistent character appearance as established in the preceding shots.'}\n\nPREVIOUS SHOT CONTINUITY:\n${$('continuity').value.trim()||'Continue naturally from the previous shot, preserving the established scene geography and character positions.'}\n\nDIRECTOR'S CONTINUITY RULES:\n${continuityText()}\n\nQUALITY AND EXECUTION:\nPhotorealistic cinematic image, coherent action in chronological order, believable physics, precise eyelines, natural body language, realistic environmental details, controlled exposure, subtle film texture and professional color grading. Keep the action clear and visually readable. Do not introduce new characters, props or actions that are not specified. End on a stable frame suitable for a seamless continuation in the next shot.`;currentPrompt=p;$('promptOutput').textContent=p;$('sceneStatus').textContent='Prompt je spreman za kopiranje ili čuvanje.';return p;}
+function clearEditor(){selectedScene=-1;$('sceneTitle').value='';$('sceneDesc').value='';$('sound').value='';$('continuity').value='';$('sceneNumber').textContent='Novi kadar';$('sceneStatus').textContent='';}
+function addScene(){const desc=$('sceneDesc').value.trim();if(!desc){$('sceneStatus').textContent='Prvo opiši scenu.';return;}const s={id:uid(),title:$('sceneTitle').value.trim()||'Kadar '+(scenes.length+1),desc,shot:$('shot').value,movement:$('movement').value,lighting:$('lighting').value,duration:$('duration').value,sound:$('sound').value,continuity:$('continuity').value,prompt:currentPrompt||''};if(selectedScene>=0)scenes[selectedScene]=s;else scenes.push(s);selectedScene=scenes.length-1;persist();renderScenes();$('sceneStatus').textContent='Kadar je dodat u storyboard.';}
+function loadScene(i){const s=scenes[i];if(!s)return;selectedScene=i;$('sceneTitle').value=s.title;$('sceneDesc').value=s.desc;$('shot').value=s.shot;$('movement').value=s.movement;$('lighting').value=s.lighting;$('duration').value=s.duration;$('sound').value=s.sound||'';$('continuity').value=s.continuity||'';$('sceneNumber').textContent='Kadar '+String(i+1).padStart(2,'0');if(s.prompt){currentPrompt=s.prompt;$('promptOutput').textContent=s.prompt;}renderScenes();$('sceneEditor').scrollIntoView({behavior:'smooth',block:'start'});}
+function addCharacter(){const name=$('charName').value.trim(),look=$('charLook').value.trim();if(!name||!look){$('sceneStatus').textContent='Unesi ime lika i njegov fizički izgled.';return;}characters.push({name,look,clothes:$('charClothes').value.trim(),behavior:$('charBehavior').value.trim()});$('charName').value='';$('charLook').value='';$('charClothes').value='';$('charBehavior').value='';persist();renderCharacters();}
+function openProject(id){const p=projects.find(x=>x.id===id);if(!p)return;activeProjectId=p.id;$('projectName').value=p.name;$('genre').value=p.genre;$('visual').value=p.visual;$('aspect').value=p.aspect;$('cameraMood').value=p.mood;scenes=p.scenes||[];characters=p.characters||[];selectedScene=-1;persist();renderScenes();renderCharacters();$('projectStatus').textContent='Učitavan projekat: '+p.name;window.scrollTo({top:0,behavior:'smooth'});}
+function newProject(){if(!confirm('Započeti novi projekat? Sačuvani projekti ostaju u galeriji.'))return;activeProjectId=null;scenes=[];characters=[];$('projectName').value='';$('genre').selectedIndex=0;$('visual').selectedIndex=0;$('aspect').selectedIndex=0;$('cameraMood').selectedIndex=0;clearEditor();currentPrompt='';$('promptOutput').textContent='Tvoj profesionalni prompt pojaviće se ovde kada pripremiš scenu.';persist();renderScenes();renderCharacters();}
+function download(name,content,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
+$('makePrompt').onclick=buildPrompt;$('addScene').onclick=()=>{if(!currentPrompt)buildPrompt();addScene();};$('addCharacter').onclick=addCharacter;$('saveProject').onclick=saveProject;$('newProject').onclick=newProject;
+$('copyPrompt').onclick=async()=>{if(!currentPrompt){$('sceneStatus').textContent='Prvo napravi prompt.';return;}try{await navigator.clipboard.writeText(currentPrompt);$('sceneStatus').textContent='Prompt je kopiran.';}catch(e){$('sceneStatus').textContent='Označi tekst u polju i kopiraj ga ručno.';}};
+$('downloadPrompt').onclick=()=>{if(!currentPrompt){$('sceneStatus').textContent='Prvo napravi prompt.';return;}download('filmski-prompt.txt',currentPrompt,'text/plain;charset=utf-8');};
+$('exportProject').onclick=()=>download('cinematic-ai-projekat.json',JSON.stringify(getProject(),null,2),'application/json');
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.go).scrollIntoView({behavior:'smooth',block:'start'});});
+safeLoad();renderScenes();renderCharacters();renderProjects();
+</script>
+</body>
+</html>
